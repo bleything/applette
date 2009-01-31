@@ -13,6 +13,7 @@
 body
   :background= !dark_grey
   :font-family "Trebuchet MS", Verdana, sans-serif
+  :color= !light_grey
 
 a
   :color = !medium_grey
@@ -20,6 +21,14 @@ a
   &:hover
     :color = !green
     :text-decoration underline
+
+div.container
+  +container
+  :background url(grid.png)
+
+////////////////////////////////////////////////////////////////////////
+/// H E A D E R   A N D   F O O T E R
+////////////////////////////////////////////////////////////////////////
 
 div#header, div#footer
   :color= !white
@@ -52,6 +61,10 @@ div#header
 div#footer
   :text-align center
 
+////////////////////////////////////////////////////////////////////////
+/// B A N N E R
+////////////////////////////////////////////////////////////////////////
+
 div#banner
   :text-align center
 
@@ -63,12 +76,33 @@ div#banner
     :color= !light_grey
     :font-size 1.5em
     :margin-top -1em
+    :margin-bottom 2em
 
-div.container
-  +container
-  :background url(grid.png)
+////////////////////////////////////////////////////////////////////////
+// H O W   I T   W O R K S
+////////////////////////////////////////////////////////////////////////
 
-a
-  &:hover
-    
+div#howitworks
+  +column(24)
+  :background= !medium_grey
+  :margin-bottom 2em
+      
+  h3
+    :font-size 2em
+    :color= !dark_grey
+
+  // starts one column in
+  div#first
+    +push(1)
+
+  // two columns between each item
+  div#then, div#finally
+    +push(2)
+
+  // each section is 6 columns wide
+  div#first, div#then, div#finally
+    +column(6)
+          
+  div#finally
+    +last
 
