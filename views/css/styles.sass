@@ -1,0 +1,33 @@
+// color scheme from kuler:
+// http://kuler.adobe.com/#themeID/177361
+
+!white       = #f0f1f2
+!dark_grey   = #232625
+!medium_grey = #647362
+!green       = #b3d929
+!light_grey  = #d2d9b8
+
+@import blueprint/screen.sass
+@import compass/reset.sass
+
+body
+  :font-family "Trebuchet MS", Verdana, sans-serif
+  :background = !dark_grey
+  :color = !light_grey
+
+a
+  :color = !medium_grey
+  :text-decoration none
+  &:hover
+    :color = !green
+    :text-decoration underline
+    
+
+div#container
+  +container
+
+  div#banner
+    +column( 24 )
+
+    h1
+      :color= !green
