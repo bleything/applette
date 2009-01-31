@@ -24,7 +24,8 @@ a
 
 div.container
   +container
-  :background url(/grid.png)
+//  :background url(/grid.png)
+  :margin-bottom 5em
 
 ////////////////////////////////////////////////////////////////////////
 /// H E A D E R   A N D   F O O T E R
@@ -60,6 +61,7 @@ div#header
 
 div#footer
   :text-align center
+  :color= !light_grey
 
 ////////////////////////////////////////////////////////////////////////
 /// B A N N E R
@@ -85,7 +87,7 @@ div#banner
 div#howitworks
   +column(24)
   :background= !medium_grey
-  :margin-bottom 2em
+  :margin-bottom 3em
   :padding-top 0.8em
       
   h3
@@ -107,3 +109,18 @@ div#howitworks
   div#finally
     +last
 
+////////////////////////////////////////////////////////////////////////
+// G E T   S T A R T E D
+////////////////////////////////////////////////////////////////////////
+
+div#getstarted
+  +column( 22 )
+  
+  h2
+    +push( 2 )
+    +column( 10 )
+    :font-size 2em
+  
+  div
+    :padding-top 6px
+    +column( 10, true )
