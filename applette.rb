@@ -39,7 +39,7 @@ end
 ########################################################################
 ### A S S E T S
 ########################################################################
-get '/styles.css' do
+get '/css/applette.css' do
   content_type 'text/css'
 
   # Use views/stylesheets & blueprint's stylesheet dirs in the Sass
