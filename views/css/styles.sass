@@ -11,23 +11,48 @@
 @import compass/reset.sass
 
 body
+  :background= !dark_grey
   :font-family "Trebuchet MS", Verdana, sans-serif
-  :background = !dark_grey
-  :color = !light_grey
 
-a
-  :color = !medium_grey
-  :text-decoration none
-  &:hover
-    :color = !green
-    :text-decoration underline
-    
+div#header, div#footer
+  :color= !white
+  :background= !medium_grey
+  :padding 0 10px 5px 10px
 
-div#container
+div#header
+  a
+    :color= !dark_grey
+    &:hover
+      :color= !green
+
+  h1, h2
+    :display inline
+
+  h1
+    :color= !green
+    :font-size 1.5em
+    :margin-right 5px
+
+  h2
+    :color black
+    :font-size 0.9em
+
+  div.userbox
+    :position absolute
+    :top 5px
+    :right 10px
+    :font-size 0.8em
+
+div#footer
+  :text-align center
+
+div.container
   +container
 
   div#banner
-    +column( 24 )
+    +column(24)
 
-    h1
-      :color= !green
+a
+  &:hover
+    
+
