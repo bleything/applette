@@ -44,10 +44,10 @@ get '/styles.css' do
 
   # Use views/stylesheets & blueprint's stylesheet dirs in the Sass
   # loadpath
-  sass "css/styles".to_sym, {
+  sass :styles, {
     :sass => {
       :load_paths => (
-        [ File.join( File.dirname(__FILE__), 'views', 'css' ) ] +
+        [ File.join( File.dirname(__FILE__), 'views' ) ] +
         Compass::Frameworks::ALL.map {|f| f.stylesheets_directory }
       )
     }
@@ -58,6 +58,6 @@ end
 ### A C T I O N S
 ########################################################################
 get '/' do
-  @header = ""
+  @header = nil
   haml :index
 end
