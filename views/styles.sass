@@ -39,7 +39,6 @@ div#header
     :color= !green
     :font-size 1em
 
-
   h2
     :color black
     :font-size 0.6em
@@ -53,11 +52,21 @@ div#header
 div#footer
   :text-align center
 
+div#banner
+  :text-align center
+
+  h1
+    :color= !green
+    :font-size 8em
+    :font-weight bold
+  h2
+    :color= !light_grey
+    :font-size 1.5em
+    :margin-top -1em
+
 div.container
   +container
-
-  div#banner
-    +column(24)
+  :background url(grid.png)
 
 a
   &:hover

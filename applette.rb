@@ -32,7 +32,7 @@ configure do
 end
 
 before do
-  @page_title = "small ideas for small apps"
+  @page_title = "big ideas for small apps"
   @header     = partial( :header )
 end
 
@@ -58,6 +58,6 @@ end
 ### A C T I O N S
 ########################################################################
 get '/' do
-  @header = nil
+  @header = partial( :banner )
   haml :index
 end
