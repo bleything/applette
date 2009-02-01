@@ -10,6 +10,8 @@
     = @header
     
     %div.container
+      = partial :message if @message
+      = partial :warning if @warning
       = partial :error if @error
       = yield
 

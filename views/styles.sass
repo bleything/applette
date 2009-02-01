@@ -48,22 +48,36 @@ span.openid
   :padding-left 19px
   :color= !openid_orange
 
-div.error
+div.error, div.warning, div.message
   +push( 2 )
   +column( 20, true )
-  :background= !error_background
   :border-width 1px
   :border-style solid
-  :border-color= !error_border
   
   p.message
-    :padding-top 19px
-    :margin-left 1em
-    :margin-right 2em
+    :vertical-align center
+    :min-height 40px
+    :margin-left 3em
+    :margin-right 1em
+    :margin-bottom 3px
   
   img
-    :margin-right 1em
-    :float left
+    :position absolute
+    :left 5px
+    :top 4px
+
+div.error
+  :background=   !error_background
+  :border-color= !error_border
+  
+div.warning
+  :background #26261A
+  :border-color #696525
+
+div.message
+  :background #1A1F26
+  :border-color #254069
+
   
   
 
