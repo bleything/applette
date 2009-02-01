@@ -26,12 +26,16 @@ div.container
   +container
 //  :background url(/grid.png)
   :margin-bottom 5em
+  
+span.logo
+  :color= !green
+  :font-weight bold
 
 ////////////////////////////////////////////////////////////////////////
 /// H E A D E R   A N D   F O O T E R
 ////////////////////////////////////////////////////////////////////////
 
-div#header, div#footer
+div#header
   :color= !white
   :background= !medium_grey
   :padding 0 10px 5px 10px
@@ -61,7 +65,10 @@ div#header
 
 div#footer
   :text-align center
+  :background= !medium_grey
   :color= !light_grey
+  :font-size 0.8em
+  :padding 2px
 
 ////////////////////////////////////////////////////////////////////////
 /// B A N N E R
