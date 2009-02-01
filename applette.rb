@@ -61,3 +61,7 @@ get '/' do
   @header = partial( :banner )
   haml :index
 end
+
+get '/login' do
+  haml :login
+end

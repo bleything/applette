@@ -1,0 +1,8 @@
+%h1 Log in using your OpenID
+
+%form#login{ :method => 'post', 'accept-charset' => 'UTF-8', :action => '/login'}
+  %input#openid{ :type => 'text', :name => 'openid' }
+
+%p#getopenid
+  Don't have an OpenID?
+  %a{ :href => "http://www.myopenid.com" } Get one for free.

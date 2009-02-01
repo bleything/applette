@@ -24,8 +24,15 @@ a
 
 div.container
   +container
-//  :background url(/grid.png)
+  // :background url(/grid.png)
+  :margin-top 2em
   :margin-bottom 5em
+  
+  h1
+    :font-size 4em
+  h2
+    :font-size 0.8em
+
   
 span.logo
   :color= !green
@@ -132,3 +139,28 @@ div#getstarted
   div
     :padding-top 6px
     +column( 10, true )
+
+////////////////////////////////////////////////////////////////////////
+// L O G I N
+////////////////////////////////////////////////////////////////////////
+
+form#login
+  input
+
+  
+  input#openid
+    +column( 22, true )
+    :font-size 3.5em
+    :border-style solid
+    :border-width 1px
+    :border-color= !light_grey
+    :background= !medium_grey
+    :background-image url( /images/openid.png )
+    :background-repeat no-repeat
+    :background-position 2px
+    :padding-left 75px
+    :color= !light_grey
+  
+p#getopenid
+  :margin-top 5px
+  :text-align right
