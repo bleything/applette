@@ -8,8 +8,10 @@
 
   %body
     = @header
-
-    %div.container= yield
+    
+    %div.container
+      = partial :error if @error
+      = yield
 
     %div#footer
       %span.logo applette

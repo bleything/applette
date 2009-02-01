@@ -7,6 +7,12 @@
 !green       = #b3d929
 !light_grey  = #d2d9b8
 
+// other colors
+!openid_orange = #f7931e
+!error_background = #261f1f
+!error_border     = #692525
+
+
 @import blueprint/screen.sass
 @import compass/reset.sass
 
@@ -33,10 +39,33 @@ div.container
   h2
     :font-size 0.8em
 
-  
 span.logo
   :color= !green
   :font-weight bold
+
+span.openid
+  :background url( /images/tiny-openid.png ) no-repeat 0px 1px
+  :padding-left 19px
+  :color= !openid_orange
+
+div.error
+  +push( 2 )
+  +column( 20, true )
+  :background= !error_background
+  :border-width 1px
+  :border-style solid
+  :border-color= !error_border
+  
+  p.message
+    :padding-top 19px
+    :margin-left 1em
+    :margin-right 2em
+  
+  img
+    :margin-right 1em
+    :float left
+  
+  
 
 ////////////////////////////////////////////////////////////////////////
 /// H E A D E R   A N D   F O O T E R
@@ -145,9 +174,6 @@ div#getstarted
 ////////////////////////////////////////////////////////////////////////
 
 form#login
-  input
-
-  
   input#openid
     +column( 22, true )
     :font-size 3.5em
@@ -159,7 +185,7 @@ form#login
     :background-repeat no-repeat
     :background-position 2px
     :padding-left 75px
-    :color= !light_grey
+    :color= !openid_orange
   
 p#getopenid
   :margin-top 5px
