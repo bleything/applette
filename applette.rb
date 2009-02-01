@@ -124,9 +124,8 @@ post '/login' do
   # that, so don't bother rescuing it here.
   oidreq = openid_consumer.begin( params[ :openid ] )
   
-  # we want the user's name and email (former for identification, latter for gravatar)
-  oidreq.add_extension_arg( 'sreg', 'required', 'fullname' )
-  oidreq.add_extension_arg( 'sreg', 'optional', 'email' )
+  # we want the user's name (for greeting them) and email (for gravatar)
+  oidreq.add_extension_arg( 'sreg', 'optional', 'fullname, email' )
 
   # Send request - first parameter: Trusted Site,
   # second parameter: redirect target
@@ -136,18 +135,22 @@ end
 get '/login/complete' do
   oidresp = openid_consumer.complete( params, request.url )
   openid = oidresp.display_identifier
- 
+  
   case oidresp.status
     when OpenID::Consumer::FAILURE
-      "Sorry, we could not authenticate you with this identifier #{openid}."
+      @error = "Sorry, we could not authenticate you with this identifier #{openid}."
+      return haml( :login )
  
     when OpenID::Consumer::SETUP_NEEDED
-      "Immediate request failed - Setup Needed"
+      @error = "I have no idea what this error means.  Please contact me via email at ben@bleything.net if you get it!"
+      return haml( :login )
  
     when OpenID::Consumer::CANCEL
-      "Login cancelled."
+      @error = "Authorization cancelled.  Please try again."
+      return haml( :login )
  
     when OpenID::Consumer::SUCCESS
+      
       # Access additional informations:
       oot = params['openid.sreg.email']
       oot += "||" + params['openid.sreg.fullname']
