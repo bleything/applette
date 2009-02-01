@@ -1,13 +1,9 @@
 require 'rubygems'
 require 'sinatra'
+ 
+set :env,  :production
+disable :run
 
-root_dir = File.dirname(__FILE__)
-
-Sinatra::Application.default_options.merge!(
-  :views    => File.join(root_dir, 'views'),
-  :app_file => File.join(root_dir, 'applette.rb'),
-  :run => false,
-  :env => ENV['RACK_ENV'].to_sym
-)
+require 'applette'
 
 run Sinatra.application
