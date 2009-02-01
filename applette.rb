@@ -81,7 +81,7 @@ error OpenID::DiscoveryFailure do
   openid = request.env['rack.request.form_hash']['openid']
 
   @error  = "Sorry, we couldn't find your OpenID <span class='openid'>#{openid}</span>. Double-"
-  @error += "check that you've got the address correct and try again."
+  @error += "check that you've got the address right and try again."
   
   haml :login
 end
