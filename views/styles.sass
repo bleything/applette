@@ -9,8 +9,16 @@
 
 // other colors
 !openid_orange = #f7931e
+
+// message boxes
 !error_background = #261f1f
 !error_border     = #692525
+
+!warning_background = #26261A
+!warning_border     = #696525
+
+!message_background = #1A1F26
+!message_border     = #254069
 
 
 @import blueprint/screen.sass
@@ -71,12 +79,12 @@ div.error
   :border-color= !error_border
   
 div.warning
-  :background #26261A
-  :border-color #696525
+  :background=   !warning_background
+  :border-color= !warning_border
 
 div.message
-  :background #1A1F26
-  :border-color #254069
+  :background=   !message_background
+  :border-color= !message_border
 
   
   
