@@ -1,4 +1,17 @@
 #!/usr/bin/env ruby
+#
+# A silly webapp to track ideas for other silly webapps
+#
+# == Authors
+#
+# * Ben Bleything <ben@bleything.net>
+#
+# == Copyright
+#
+# Copyright (c) 2009 Ben Bleything
+#
+# This code released under the terms of the MIT license.
+#
 
 require 'rubygems'
 require 'compass'
