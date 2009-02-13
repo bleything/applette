@@ -20,88 +20,32 @@
 !message_background = #1A1F26
 !message_border     = #254069
 
-*
-  :margin 0
-  :padding 0
-
 body
-  :background= !dark_grey
-  :font-family "Trebuchet MS", Verdana, sans-serif
+  :background-color= !dark_grey
   :color= !light_grey
 
 a
   :color = !medium_grey
-  :text-decoration none
   &:hover
     :color = !green
-    :text-decoration underline
-
-h1, h2, h3, h4, h5, h6
-  :font-weight normal
-
-div.container
-  :width 950px
-  :margin 0 auto
-  :margin-top 3em
-//  :border 1px solid red
   
-  h1
-    :font-size 4em
-  h2
-    :font-size 0.8em
-
 span.logo
   :color= !green
-  :font-weight bold
 
 span.openid
-  :background url( /images/tiny-openid.png ) no-repeat 0px 1px
-  :padding-left 19px
   :color= !openid_orange
 
-div.error, div.warning, div.message
-  :border-width 1px
-  :border-style solid
-  :position relative
-  :margin-bottom 1em
-  
-  p.message
-    :vertical-align center
-    :min-height 36px
-    :margin-top 2px
-    :margin-left 3em
-    :margin-right 1em
-  
-  img
-    :position absolute
-    :left 5px
-    :top 4px
-
 div.error
-  :background=   !error_background
-  :border-color= !error_border
+  :background-color= !error_background
+  :border-color=     !error_border
   
 div.warning
-  :background=   !warning_background
-  :border-color= !warning_border
+  :background-color= !warning_background
+  :border-color=     !warning_border
 
 div.message
-  :background=   !message_background
-  :border-color= !message_border
-
-p
-  :line-height 1.4em
-
-div.left, div.right
-  :position absolute
-
-div.left
-  :left 0
-div.right
-  :right 0
-
-div.clear
-  :clear both
+  :background-color= !message_background
+  :border-color=     !message_border
 
 ////////////////////////////////////////////////////////////////////////
 /// H E A D E R   A N D   F O O T E R
@@ -109,123 +53,48 @@ div.clear
 
 div#header
   :color= !white
-  :background= !medium_grey
-  :padding 0 10px 5px 10px
+  :background-color= !medium_grey
 
   a
     :color= !dark_grey
     &:hover
       :color= !green
 
-  h1, h2
-    :display inline
-
   h1
-    :font-weight bold
     :color= !green
-    :font-size 1em
 
   h2
     :color black
-    :font-size 0.6em
-
-  div.userbox
-    :font-size 0.9em
-    :position absolute
-    :top 2px
-    :right 10px
 
 div#footer
-  :border-color= !medium_grey
-  :border-top-width 1px
-  :border-top-style solid
-  :font-size 0.7em
-  :margin-top 3em
-  :position relative
-  :padding-top 3px
-    
+  :border-color= !medium_grey    
 
 ////////////////////////////////////////////////////////////////////////
 /// B A N N E R
 ////////////////////////////////////////////////////////////////////////
 
 div#banner
-  :text-align center
-  :margin-top 1em
-  :margin-bottom 3em
-
   h1
     :color= !green
-    :font-size 8em
-    :font-weight bold
   h2
     :color= !light_grey
-    :font-size 1.5em
 
 ////////////////////////////////////////////////////////////////////////
 // H O W   I T   W O R K S
 ////////////////////////////////////////////////////////////////////////
 
 div#howitworks
-  :background= !medium_grey
-  :padding-left 2.5em
-  :padding-right 2.5em
-  :margin-bottom 4em
-  :padding-top 20px
-  :padding-bottom 24px
+  :background-color= !medium_grey
       
   h3
-    :font-size 2em
     :color= !dark_grey
-    :margin-bottom 0.5em
-    
-  div#first, div#then, div#finally
-    :float left
-    :width 25%
   
-  div#first, div#then
-    :margin-right 6.5em
-  
-////////////////////////////////////////////////////////////////////////
-// G E T   S T A R T E D
-////////////////////////////////////////////////////////////////////////
-
-div#getstarted
-  :position relative
-  :width 75%
-  :margin 0 auto
-  :height 5em
-  
-  h2
-    :font-size 2em
-  
-  div.right
-    // correct for some annoying placement
-    :padding-top 3px
-
 ////////////////////////////////////////////////////////////////////////
 // L O G I N
 ////////////////////////////////////////////////////////////////////////
 
 form#login
-  :margin-top 3em
-  
   input#openid
-    :font-size 3.5em
-    :border-style solid
-    :border-width 1px
     :border-color= !light_grey
-    :background= !medium_grey
-    :background-image url( /images/openid.png )
-    :background-repeat no-repeat
-    :background-position 2px
-    :padding-left 75px
+    :background-color= !medium_grey
     :color= !openid_orange
-    // this is ridiculous, but set the width to 950-75-2, since that's
-    // the width of the container minus the width of the padding and
-    // border width.
-    :width 873px
-  
-p#getopenid
-  :margin-top 3px
-  :text-align right
