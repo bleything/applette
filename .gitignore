@@ -1,2 +1,3 @@
 tmp/openid
 .DS_Store
+*.sqlite
