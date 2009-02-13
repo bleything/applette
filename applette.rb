@@ -38,7 +38,7 @@ before do
   @header     = partial( :header )
   
   # simulate Rails' flash concept.  Supports three kinds of flash,
-  # warning, error and message.
+  # warning, error and info.
   session[ :flash ] ||= {}
   
   if session[ :flash ][ :warning ]
@@ -46,9 +46,9 @@ before do
     session[ :flash ].delete :warning
   end
   
-  if session[ :flash ][ :message ]
-    @message = session[ :flash ][ :message ].dup
-    session[ :flash ].delete :message
+  if session[ :flash ][ :info ]
+    @info = session[ :flash ][ :info ].dup
+    session[ :flash ].delete :info
   end
   
   if session[ :flash ][ :error ]
@@ -92,7 +92,7 @@ helpers do
   end
   
   # simulate Rails' flash concept.  This supports three kinds of flash,
-  # warning, error and message.
+  # warning, error and info.
   def flash( type, message )
     session[ :flash ] ||= {}
     session[ :flash ][ type ] = message
@@ -173,7 +173,7 @@ get '/login/complete' do
       
       session[ :user_id ] = user.id
       
-      flash :message, "Login successful! #{session.inspect}"
+      flash :info, "Login successful! #{session.inspect}"
       
       redirect '/user_details'
   end
