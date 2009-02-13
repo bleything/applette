@@ -1,0 +1,232 @@
+/*///////////////////////////////////////////////////////////////////
+///	S E T   U P   T H E   G L O B A L   B A S I C S
+///////////////////////////////////////////////////////////////////*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+p {
+  line-height: 1.4em;
+}
+
+/*///////////////////////////////////////////////////////////////////
+///	L A Y O U T   C L A S S E S
+///////////////////////////////////////////////////////////////////*/
+
+div.container {
+  width: 950px;
+  margin: 0 auto; /* magical centering mojo */
+  margin-top: 3em;
+}
+
+div.container h1 {
+  font-size: 4em;
+}
+
+div.container h2 {
+  font-size: 0.8em;
+}
+
+/*///////////////////////////////////////////////////////////////////
+///	U T I L I T Y   C L A S S E S
+///////////////////////////////////////////////////////////////////*/
+
+div.left, div.right {
+  position: absolute;
+}
+
+div.left {
+  left: 0;
+}
+
+div.right {
+  right: 0;
+}
+
+div.clear {
+  clear: both;
+}
+/*///////////////////////////////////////////////////////////////////
+///	S P E C I A L   B R A N D I N G   C L A S S E S
+///////////////////////////////////////////////////////////////////*/
+
+span.logo {
+  font-weight: bold;
+}
+
+span.openid {
+  background: url( /images/tiny-openid.png ) no-repeat 0px 1px;
+  padding-left: 19px;
+}
+
+/*///////////////////////////////////////////////////////////////////
+///	M E S S A G E   B O X E S
+///////////////////////////////////////////////////////////////////*/
+
+/* TODO: refactor this. divs should have two classes, message and error */
+div.error, div.warning, div.message {
+  border-width: 1px;
+  border-style: solid;
+  position: relative;
+  margin-bottom: 1em;
+}
+
+div.error p.message, div.warning p.message, div.message p.message {
+  vertical-align: center;
+  min-height: 36px;
+  margin-top: 2px;
+  margin-left: 3em;
+  margin-right: 1em;
+}
+
+div.error img, div.warning img, div.message img {
+  position: absolute;
+  left: 5px;
+  top: 4px;
+}
+
+/*///////////////////////////////////////////////////////////////////
+///	H E A D E R
+///////////////////////////////////////////////////////////////////*/
+
+div#header {
+  padding: 0 10px 5px 10px;
+}
+
+div#header h1, div#header h2 {
+  display: inline;
+}
+
+div#header h1 {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+div#header h2 {
+  font-size: 0.6em;
+}
+
+div#header div.userbox {
+  font-size: 0.9em;
+  position: absolute;
+  top: 2px;
+  right: 10px;
+}
+
+/*///////////////////////////////////////////////////////////////////
+/// F O O T E R
+///////////////////////////////////////////////////////////////////*/
+
+div#footer {
+  border-top-width: 1px;
+  border-top-style: solid;
+  font-size: 0.7em;
+  margin-top: 3em;
+  position: relative;
+  padding-top: 3px; 
+}
+
+/*///////////////////////////////////////////////////////////////////
+/// I N D E X   P A G E
+///////////////////////////////////////////////////////////////////*/
+
+div#banner {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+
+div#banner h1 {
+  font-size: 8em;
+  font-weight: bold;
+}
+
+div#banner h2 {
+  font-size: 1.5em;
+}
+
+div#howitworks {
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+  margin-bottom: 4em;
+  padding-top: 20px;
+  padding-bottom: 24px;
+}
+
+div#howitworks h3 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+div#first, div#then, div#finally {
+  float: left;
+  width: 25%;
+}
+
+div#first, div#then {
+  margin-right: 6.5em;
+}
+
+div#getstarted {
+  position: relative;
+  width: 75%;
+  margin: 0 auto;
+  height: 5em;
+}
+
+div#getstarted h2 {
+  font-size: 2em;
+}
+
+div#getstarted div.right {
+  padding-top: 3px;
+}
+
+/*///////////////////////////////////////////////////////////////////
+/// L O G I N   P A G E
+///////////////////////////////////////////////////////////////////*/
+
+form#login {
+  margin-top: 3em;
+}
+
+form#login input#openid {
+  font-size: 3.5em;
+  border-style: solid;
+  border-width: 1px;
+
+  background-image: url( /images/openid.png );
+  background-repeat: no-repeat;
+  background-position: 2px;
+  padding-left: 75px;
+
+  /*
+   * this is ridiculous, but set the width to 950-75-2, since that's
+   * the width of the container minus the width of the padding and
+   * border width.
+   */
+  width: 873px;
+}
+
+p#getopenid {
+  margin-top: 3px;
+  text-align: right;
+}
