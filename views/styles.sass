@@ -20,9 +20,9 @@
 !message_background = #1A1F26
 !message_border     = #254069
 
-
-@import blueprint/screen.sass
-@import compass/reset.sass
+*
+  :margin 0
+  :padding 0
 
 body
   :background= !dark_grey
@@ -36,11 +36,14 @@ a
     :color = !green
     :text-decoration underline
 
+h1, h2, h3, h4, h5, h6
+  :font-weight normal
+
 div.container
-  +container
-  // :background url(/grid.png)
-  :margin-top 2em
-  :margin-bottom 5em
+  :width 950px
+  :margin 0 auto
+  :margin-top 3em
+//  :border 1px solid red
   
   h1
     :font-size 4em
@@ -57,17 +60,17 @@ span.openid
   :color= !openid_orange
 
 div.error, div.warning, div.message
-  +push( 2 )
-  +column( 20, true )
   :border-width 1px
   :border-style solid
+  :position relative
+  :margin-bottom 1em
   
   p.message
     :vertical-align center
-    :min-height 40px
+    :min-height 36px
+    :margin-top 2px
     :margin-left 3em
     :margin-right 1em
-    :margin-bottom 3px
   
   img
     :position absolute
@@ -86,8 +89,19 @@ div.message
   :background=   !message_background
   :border-color= !message_border
 
-  
-  
+p
+  :line-height 1.4em
+
+div.left, div.right
+  :position absolute
+
+div.left
+  :left 0
+div.right
+  :right 0
+
+div.clear
+  :clear both
 
 ////////////////////////////////////////////////////////////////////////
 /// H E A D E R   A N D   F O O T E R
@@ -98,7 +112,6 @@ div#header
   :background= !medium_grey
   :padding 0 10px 5px 10px
 
-div#header
   a
     :color= !dark_grey
     &:hover
@@ -123,11 +136,14 @@ div#header
     :right 10px
 
 div#footer
-  :text-align center
-  :background= !medium_grey
-  :color= !white
-  :font-size 0.8em
-  :padding 2px
+  :border-color= !medium_grey
+  :border-top-width 1px
+  :border-top-style solid
+  :font-size 0.7em
+  :margin-top 3em
+  :position relative
+  :padding-top 3px
+    
 
 ////////////////////////////////////////////////////////////////////////
 /// B A N N E R
@@ -135,6 +151,8 @@ div#footer
 
 div#banner
   :text-align center
+  :margin-top 1em
+  :margin-bottom 3em
 
   h1
     :color= !green
@@ -143,61 +161,56 @@ div#banner
   h2
     :color= !light_grey
     :font-size 1.5em
-    :margin-top -1em
-    :margin-bottom 2em
 
 ////////////////////////////////////////////////////////////////////////
 // H O W   I T   W O R K S
 ////////////////////////////////////////////////////////////////////////
 
 div#howitworks
-  +column(24)
   :background= !medium_grey
-  :margin-bottom 3em
-  :padding-top 0.8em
+  :padding-left 2.5em
+  :padding-right 2.5em
+  :margin-bottom 4em
+  :padding-top 20px
+  :padding-bottom 24px
       
   h3
     :font-size 2em
     :color= !dark_grey
-
-  // starts one column in
-  div#first
-    +push(1)
-
-  // two columns between each item
-  div#then, div#finally
-    +push(2)
-
-  // each section is 6 columns wide
+    :margin-bottom 0.5em
+    
   div#first, div#then, div#finally
-    +column(6)
-          
-  div#finally
-    +last
-
+    :float left
+    :width 25%
+  
+  div#first, div#then
+    :margin-right 6.5em
+  
 ////////////////////////////////////////////////////////////////////////
 // G E T   S T A R T E D
 ////////////////////////////////////////////////////////////////////////
 
 div#getstarted
-  +column( 22 )
+  :position relative
+  :width 75%
+  :margin 0 auto
+  :height 5em
   
   h2
-    +push( 2 )
-    +column( 10 )
     :font-size 2em
   
-  div
-    :padding-top 6px
-    +column( 10, true )
+  div.right
+    // correct for some annoying placement
+    :padding-top 3px
 
 ////////////////////////////////////////////////////////////////////////
 // L O G I N
 ////////////////////////////////////////////////////////////////////////
 
 form#login
+  :margin-top 3em
+  
   input#openid
-    +column( 22, true )
     :font-size 3.5em
     :border-style solid
     :border-width 1px
@@ -208,7 +221,11 @@ form#login
     :background-position 2px
     :padding-left 75px
     :color= !openid_orange
+    // this is ridiculous, but set the width to 950-75-2, since that's
+    // the width of the container minus the width of the padding and
+    // border width.
+    :width 873px
   
 p#getopenid
-  :margin-top 5px
+  :margin-top 3px
   :text-align right

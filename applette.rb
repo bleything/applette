@@ -14,15 +14,12 @@
 #
 
 require 'rubygems'
-require 'compass'
+require 'sinatra'
+require 'sequel'
 
 gem 'ruby-openid', '>=2.1.2'
 require 'openid'
 require 'openid/store/filesystem'
-
-require 'sinatra'
-require 'sequel'
-
 
 ########################################################################
 ### S E T U P   A N D   F I L T E R S
@@ -39,6 +36,28 @@ end
 before do
   @page_title = "big ideas for small apps"
   @header     = partial( :header )
+  
+  # simulate Rails' flash concept.  Supports three kinds of flash,
+  # warning, error and message.
+  session[ :flash ] ||= {}
+  
+  if session[ :flash ][ :warning ]
+    @warning = session[ :flash ][ :warning ].dup
+    session[ :flash ].delete :warning
+  end
+  
+  if session[ :flash ][ :message ]
+    @message = session[ :flash ][ :message ].dup
+    session[ :flash ].delete :message
+  end
+  
+  if session[ :flash ][ :error ]
+    @error = session[ :flash ][ :error ].dup
+    session[ :flash ].delete :error
+  end
+
+  # grab @user; we'll need it later.
+  @user = User.find( :id => session[:user_id] ) if session[ :user_id ]
 end
 
 
@@ -71,6 +90,13 @@ helpers do
   def root_url
     request.url.match(/(^.*\/{2}[^\/]*)/)[1]
   end
+  
+  # simulate Rails' flash concept.  This supports three kinds of flash,
+  # warning, error and message.
+  def flash( type, message )
+    session[ :flash ] ||= {}
+    session[ :flash ][ type ] = message
+  end
 end
 
 
@@ -91,17 +117,7 @@ end
 ########################################################################
 get '/css/applette.css' do
   content_type 'text/css'
-
-  # Use views/stylesheets & blueprint's stylesheet dirs in the Sass
-  # loadpath
-  sass :styles, {
-    :sass => {
-      :load_paths => (
-        [ File.join( File.dirname(__FILE__), 'views' ) ] +
-        Compass::Frameworks::ALL.map {|f| f.stylesheets_directory }
-      )
-    }
-  }
+  sass :styles
 end
 
 ########################################################################
@@ -125,7 +141,7 @@ post '/login' do
   oidreq = openid_consumer.begin( params[ :openid ] )
   
   # we want the user's name (for greeting them) and email (for gravatar)
-  oidreq.add_extension_arg( 'sreg', 'optional', 'fullname, email' )
+  oidreq.add_extension_arg( 'sreg', 'optional', 'fullname,email,nickname' )
 
   # Send request - first parameter: Trusted Site,
   # second parameter: redirect target
@@ -138,23 +154,29 @@ get '/login/complete' do
   
   case oidresp.status
     when OpenID::Consumer::FAILURE
-      @error = "Sorry, we could not authenticate you with this identifier #{openid}."
-      return haml( :login )
+      @error = "Sorry, we could not authenticate you with <span class='openid'>#{openid}</span>."
  
     when OpenID::Consumer::SETUP_NEEDED
       @error = "I have no idea what this error means.  Please contact me via email at ben@bleything.net if you get it!"
-      return haml( :login )
  
     when OpenID::Consumer::CANCEL
       @error = "Authorization cancelled.  Please try again."
-      return haml( :login )
  
     when OpenID::Consumer::SUCCESS
+      user = User.find_or_create( :openid => openid )
+
+      user.email    = params[ 'openid.sreg.email'    ] rescue nil
+      user.name     = params[ 'openid.sreg.fullname' ] rescue nil
+      user.nickname = params[ 'openid.sreg.nickname' ] rescue nil
       
-      # Access additional informations:
-      oot = params['openid.sreg.email']
-      oot += "||" + params['openid.sreg.fullname']
- 
-      "Login successfull: #{oot} <pre>#{session.inspect}</pre> || <pre>#{openid}</pre>" # startup something
+      user.save
+      
+      session[ :user_id ] = user.id
+      
+      flash :message, "Login successful! #{session.inspect}"
+      
+      redirect '/user_details'
   end
+  
+  haml :login
 end
