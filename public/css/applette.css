@@ -64,6 +64,31 @@ div.right {
 div.clear {
   clear: both;
 }
+
+/*///////////////////////////////////////////////////////////////////
+///	F O R M S
+///////////////////////////////////////////////////////////////////*/
+
+form {
+  margin-top: 2em;
+}
+
+form input {
+  width: 100%;
+  
+  border-style: solid;
+  border-width: 1px;
+
+  font-size: 1.5em;
+  
+  padding: 3px 0 3px 0;
+}
+
+form label {
+  display: block;
+  margin-top: 1em;
+}
+
 /*///////////////////////////////////////////////////////////////////
 ///	S P E C I A L   B R A N D I N G   C L A S S E S
 ///////////////////////////////////////////////////////////////////*/
@@ -199,18 +224,16 @@ div#getstarted div.right {
   padding-top: 3px;
 }
 
+div#getstarted p {
+  font-size: 1em;
+}
+
 /*///////////////////////////////////////////////////////////////////
 /// L O G I N   P A G E
 ///////////////////////////////////////////////////////////////////*/
 
-form#login {
-  margin-top: 3em;
-}
-
 form#login input#openid {
   font-size: 3.5em;
-  border-style: solid;
-  border-width: 1px;
 
   background-image: url( /images/openid.png );
   background-repeat: no-repeat;
